@@ -1,21 +1,25 @@
 
-
-// Computers choice & resullt
 function getComputerChoice() {
-    return Math.floor(Math.random() * 3);
-    let computerChoiceResult = getComputerChoice();
+    let computerChoice = Math.floor(Math.random() * 2);
+
+    if (computerChoice === 0){
+        return 'Rock';
+    }
+    else if (computerChoice === 1){
+        return 'Paper';
+    }
+    else {
+        return 'Scissors';
+    }
 }
 
 
 
-if (computerChoiceResult === 0) {
-    console.log("Rock");
-} else if (computerChoiceResult === 1) {
-    console.log("Paper");
-} else {
-    console.log("Scissors");
-}
-  
+
+
+
+
+
 
 
 
