@@ -1,3 +1,4 @@
+function PlayGame() {
 
 function getComputerChoice() {
     let computerSelection = Math.floor(Math.random() * 3);
@@ -36,36 +37,25 @@ let comupterScore = 0;
 
 function playRound(humanChoice, computerChoice) {
 
-    if (humanChoice === 'Paper' && computerChoice === 'Rock'){
+    if (humanChoice === 'Paper' && computerChoice === 'Rock' || 
+        humanChoice === 'Scissors' && computerChoice === 'Paper' || 
+        humanChoice === 'Rock' && computerChoice === 'Scissors'){
         humanScore++;
-        console.log('You Win! Paper beats Rock');
-    } 
-    else if (humanChoice === 'Scissors' && computerChoice === 'Paper'){
-        humanScore++;
-        console.log('You Win! Scissors beats Paper');
-    } 
-    else if (humanChoice === 'Rock' && computerChoice === 'Scissors'){
-        humanScore++;
-        console.log('You Win! Rock beats Scissors');
-    } 
-    else if (humanChoice === 'Rock' && computerChoice === 'Paper'){
-        comupterScore++;
-        console.log('You lose! Rock beats Paper!');
-    } 
-    else if (humanChoice === 'Paper' && computerChoice === 'Scissors'){
-        comupterScore++;
-        console.log('You lose! Scissors beats Paper!');
-    } 
-    else if (humanChoice === 'Scissors' && computerChoice == 'Rock'){
-        comupterScore++;
-        console.log('You lose! Rock beats Scissors');
+        console.log(`You Win! ${humanChoice} defeats ${computerChoice}`);
+    }
+    else if (humanChoice === 'Rock' && computerChoice === 'Paper' || 
+            humanChoice === 'Paper' && computerChoice === 'Scissors' ||
+            humanChoice === 'Scissors' && computerChoice == 'Rock'){
+            comupterScore++;
+            console.log(`You Lose! ${computerChoice} defeats ${humanChoice}`);
     } 
     else if (humanChoice === computerChoice){
         console.log(`It's a draw! You both picked ${humanChoice}`);
         //Remeber to use backticks when using ${}
     } 
     else {
-        console.log('Invalid answer, choose again.');
+        console.log("Invalid input. No round played.");
+
     }
 }
 
@@ -74,10 +64,23 @@ const computerSelection = getComputerChoice();
 
 playRound(humanSelection, computerSelection);
 
+for (let i = 1; i < 5; i++) {
+    const humanSelection = getHumanChoice();
+    const computerSelection = getComputerChoice();
+    playRound(humanSelection, computerSelection);
+}
+
+}
+
+
+
+PlayGame();
 
 
 
 
 
 
+
+// I DONT KNOW HOW TO MAKE FUNCTION'S humanChoice PARAMETER CASE-INSENSITIVE
 
