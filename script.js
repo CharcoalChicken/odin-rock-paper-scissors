@@ -1,17 +1,39 @@
 
-
 //Get computers choice
 function getComputersChoice(max) {    
-    let options = [`Rock`, `Paper`, `Scissors`];
-    let random = options[Math.floor(Math.random() * options.length)];
-    return random
+    let options = [`rock`, `paper`, `scissors`];
+    let computerChoice = options[Math.floor(Math.random() * options.length)];
+    return computerChoice;
 }
-getComputersChoice();
-console.log(getComputersChoice());
+
 
 //Get humans choice
 function getHumansChoice() {
-    let humansChoice = prompt("Rock, Paper or Scissors?");
-    return humansChoice
+    let humanChoice = prompt("Rock, Paper or Scissors?");
+    humanChoice = humanChoice.toLowerCase();
+    return humanChoice;
 }
-getHumansChoice();
+
+//Player Score tracking variables
+let humanScore = 0;
+let computerScore = 0;
+
+//Play a single round
+function playRound(humanChoice, computerChoice){
+    if (humanChoice === computerChoice) {
+        console.log(`It's a draw! You both picked ${humanChoice}.`);
+    } else if (
+    (humanChoice == "paper" && computerChoice == "rock") || 
+    (humanChoice == "scissors" && computerChoice == "paper") || 
+    (humanChoice == "rock" && computerChoice == "scissors") 
+    ) {
+        console.log(`You win! ${humanChoice} beats ${computerChoice}.`);
+    } else{
+        console.log(`You lose! ${computerChoice} beats ${humanChoice}.`)
+    }
+}
+
+const humanSelection = getHumansChoice();
+const computerSelection = getComputersChoice();
+
+playRound(humanSelection, computerSelection);
