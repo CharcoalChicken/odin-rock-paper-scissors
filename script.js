@@ -20,20 +20,37 @@ let computerScore = 0;
 
 //Play a single round
 function playRound(humanChoice, computerChoice){
-    if (humanChoice === computerChoice) {
-        console.log(`It's a draw! You both picked ${humanChoice}.`);
-    } else if (
-    (humanChoice == "paper" && computerChoice == "rock") || 
-    (humanChoice == "scissors" && computerChoice == "paper") || 
-    (humanChoice == "rock" && computerChoice == "scissors") 
-    ) {
-        console.log(`You win! ${humanChoice} beats ${computerChoice}.`);
-    } else{
-        console.log(`You lose! ${computerChoice} beats ${humanChoice}.`)
-    }
+            if (humanChoice === computerChoice) {
+                console.log(`It's a draw! You both picked ${humanChoice}.`);
+            
+            } else if ((humanChoice == "paper" && computerChoice == "rock") || 
+            (humanChoice == "scissors" && computerChoice == "paper") || 
+            (humanChoice == "rock" && computerChoice == "scissors")) {
+                console.log(`You win! ${humanChoice} beats ${computerChoice}.`);
+                humanScore++;
+
+            } else {
+                console.log(`You lose! ${computerChoice} beats ${humanChoice}.`);
+                computerScore++
+            }
+        }
+                
+           
+
+//Play a entire game
+function playGame(){
+while (humanScore <5 && computerScore <5) {
+    const humanSelection = getHumansChoice();
+    const computerSelection = getComputersChoice();
+    playRound(humanSelection, computerSelection);
 }
 
-const humanSelection = getHumansChoice();
-const computerSelection = getComputersChoice();
-
-playRound(humanSelection, computerSelection);
+    if (humanScore === 5){
+        console.log(`Human Wins!`);
+    } else if (computerScore === 5) {
+        console.log(`Computer Wins`);
+    } else {
+        console.log(`ok`);
+    }  
+}
+playGame(); 
